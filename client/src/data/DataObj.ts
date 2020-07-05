@@ -1,7 +1,7 @@
 export type DataObj = {
   route?: string,
   title: string,
-  id: number,
-  parent: number | null,
+  isParent: Boolean,
+  children?: Array<DataObj>,
   content?: Array<any>
 }

@@ -20,7 +20,10 @@ import {AccordionDetails} from "@material-ui/core";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import parse from 'html-react-parser';
 import {data, mainPage} from '../../data';
+import {transliterateRus} from "../../utils";
+import './styles.css';
 
 const drawerWidth = 320;
 
@@ -128,10 +131,12 @@ const App = () => {
       setContent(mainPage.content)
     } else {
       const routeArr = location.pathname.split('/');
-      const currentItem = data.find(e => e.route === `/${routeArr[2]}`);
-      if (currentItem !== undefined) {
-        setTitle(currentItem.title);
-        setContent(currentItem.content);
+      const currentParent = data.find(e => e.route === `/${routeArr[1]}`);
+      const currentChild = currentParent && currentParent.children && currentParent.children.find(e => e.route === `/${routeArr[2]}`);
+
+      if (currentChild !== undefined) {
+        setTitle(currentChild.title);
+        setContent(currentChild.content);
       }
     }
   }, [location])
@@ -191,20 +196,20 @@ const App = () => {
           </ListItem>
         </List>
 
-        {data && data.filter(e => e.parent === null).map((item, index) => (
-          <Accordion key={`${item.id}-dropdown`}>
+        {data && data.map((parent, index) => (
+          <Accordion key={`${transliterateRus(parent.title)}-dropdown`}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
-              aria-controls={`${item.id}-content`}
-              id={`${item.id}-header`}
+              aria-controls={`${transliterateRus(parent.title)}-content`}
+              id={`${transliterateRus(parent.title)}-header`}
             >
-              <Typography>{item.title}</Typography>
+              <Typography>{parent.title}</Typography>
             </AccordionSummary>
             <AccordionDetails className={classes.accordionDetails}>
               <List className={classes.accordionList}>
-                {data.filter(a => a.parent === item.id).map((child, index) => (
-                  <ListItem button key={`${child.id}`} className={classes.accordionListItem}>
-                    <Link component={RouterLink} to={`${item.route}${child.route}`} className={classes.link}>
+                {parent.children && parent.children.map((child, index) => (
+                  <ListItem button key={`${transliterateRus(child.title)}`} className={classes.accordionListItem}>
+                    <Link component={RouterLink} to={`${parent.route}${child.route}`} className={classes.link}>
                       <ListItemText primary={child.title} className={classes.linkText} />
                     </Link>
                   </ListItem>
@@ -220,9 +225,22 @@ const App = () => {
         })}
       >
         <div className={classes.drawerHeader} />
-
         {content && content.map((item, index) => (
-          <Typography paragraph key={index}>{item}</Typography>
+          <Typography paragraph key={index}>
+            {parse(item, {
+              replace: domNode => {
+                if (domNode.name && domNode.name === 'a') {
+                  if (domNode.attribs && domNode.attribs.href) {
+                    return React.createElement(
+                      RouterLink,
+                      {to: domNode.attribs.href},
+                      domNode.children && domNode.children[0].data
+                    );
+                  }
+                }
+              }
+            })}
+          </Typography>
         ))}
       </main>
     </div>

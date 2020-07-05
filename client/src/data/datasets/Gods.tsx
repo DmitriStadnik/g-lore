@@ -1,21 +1,18 @@
 import {DataObj} from "../DataObj";
 import testImage1 from "../images/50.jpg";
-import React from "react";
 
 const Gods: Array<DataObj> = [
   {
     route: '/gods',
     title: 'Боги',
-    id: 7,
-    parent: null,
-  },
-  {
-    route: '/dristoc',
-    title: 'Дристоц',
-    id: 8,
-    parent: 7,
-    content: [
-      `TEST 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    isParent: true,
+    children: [
+      {
+        route: '/dristoc',
+        title: 'Дристоц',
+        isParent: false,
+        content: [
+          `TEST 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
         facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
         gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
@@ -26,9 +23,9 @@ const Gods: Array<DataObj> = [
         arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
         donec massa sapien faucibus et molestie ac.`,
 
-      (<img src={testImage1} />),
+          `<img src="${testImage1}" class="article-image" />`,
 
-      `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
         facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
         gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
@@ -38,8 +35,11 @@ const Gods: Array<DataObj> = [
         imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
         arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
         donec massa sapien faucibus et molestie ac.`
+        ]
+      }
     ]
-  }
+  },
+
 ];
 
 export default Gods;
