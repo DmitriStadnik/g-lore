@@ -237,6 +237,12 @@ const App = () => {
                       domNode.children && domNode.children[0].data
                     );
                   }
+                } else if (domNode.name && domNode.name === 'h6') {
+                  return React.createElement(
+                    Typography,
+                    {variant: 'h6'},
+                    domNode.children && domNode.children[0].data
+                  );
                 }
               }
             })}
