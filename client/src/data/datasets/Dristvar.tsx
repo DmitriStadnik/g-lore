@@ -1,6 +1,7 @@
 import {DataObj} from "../DataObj";
 import testImage1 from "../images/50.jpg";
 import dristoborod from "../images/dristoborod.png";
+import {compareObjectsByTitle} from "../../utils";
 
 const Dristvar: Array<DataObj> = [
   {
@@ -13,29 +14,11 @@ const Dristvar: Array<DataObj> = [
         title: 'Королевство Дриствар',
         isParent: false,
         content: [
-          `TEST 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.`,
-
-          `<img src="${testImage1}" class="article-image" />`,
-
-          `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.`
+          `Королевство Дриствар - древнейшее государство, созданное последователями Дристца.`,
+          `Правитель: Король Дристобород.`,
+          `Столица: Жепа.`,
+          `Валюта: дристкоин.`,
+          `Государственная религия: Дристянцтво.`
         ]
       },
       {
@@ -54,7 +37,25 @@ const Dristvar: Array<DataObj> = [
           `,
         ]
       },
-    ]
+      {
+        route: '/zhepa',
+        title: 'Жепа',
+        isParent: false,
+        content: [
+          `Жепа - Столица <a href="/dristvar/korolevstvo-dristvar">Дриствара</a>. 
+          `,
+        ]
+      },
+      {
+        route: '/zhepa-v-oblasti',
+        title: 'Жепа в области Жепы',
+        isParent: false,
+        content: [
+          `Жепа - портовый город недалеко от <a href="/dristvar/zhepa">столицы</a>. Две жепы испокон веков спорят какая из двух жеп жепнее. 
+          `,
+        ]
+      },
+    ].sort(compareObjectsByTitle)
   },
 
 ];
