@@ -6,7 +6,6 @@ import Generico from "./datasets/Generico";
 import Kokovo from "./datasets/Kokovo";
 
 export const mainPage: DataObj = {
-  route: '/',
   title: 'Главная',
   isParent: false,
   content: [

@@ -4,12 +4,10 @@ import {compareObjectsByTitle} from "../../utils";
 
 const Test: Array<DataObj> = [
   {
-    route: '/world',
     title: 'Мир',
     isParent: true,
     children: [
       {
-        route: '/drevnyaya-istoriya-mira',
         title: 'Древняя история мира',
         isParent: false,
         content: [
@@ -61,7 +59,6 @@ const Test: Array<DataObj> = [
         ]
       },
       {
-        route: '/rofl',
         title: 'Великий Рофл',
         isParent: false,
         content: [
@@ -69,7 +66,6 @@ const Test: Array<DataObj> = [
         ]
       },
       {
-        route: '/hpownr',
         title: 'ХРОШНЯ',
         isParent: false,
         content: [

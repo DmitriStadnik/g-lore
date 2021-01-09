@@ -1,16 +1,13 @@
 import {DataObj} from "../DataObj";
-import testImage1 from "../images/50.jpg";
 import dristoborod from "../images/dristoborod.png";
 import {compareObjectsByTitle} from "../../utils";
 
 const Dristvar: Array<DataObj> = [
   {
-    route: '/dristvar',
     title: 'Дриствар',
     isParent: true,
     children: [
       {
-        route: '/korolevstvo-dristvar',
         title: 'Королевство Дриствар',
         isParent: false,
         content: [
@@ -22,7 +19,6 @@ const Dristvar: Array<DataObj> = [
         ]
       },
       {
-        route: '/dristoborod',
         title: 'Король Дристобород',
         isParent: false,
         content: [
@@ -38,16 +34,13 @@ const Dristvar: Array<DataObj> = [
         ]
       },
       {
-        route: '/zhepa',
         title: 'Жепа',
         isParent: false,
         content: [
-          `Жепа - Столица <a href="/dristvar/korolevstvo-dristvar">Дриствара</a>. 
-          `,
+          `Жепа - Столица <a href="/dristvar/korolevstvo-dristvar">Дриствара</a>.`,
         ]
       },
       {
-        route: '/zhepa-v-oblasti',
         title: 'Жепа в области Жепы',
         isParent: false,
         content: [

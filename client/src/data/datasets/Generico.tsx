@@ -3,12 +3,10 @@ import {compareObjectsByTitle} from "../../utils";
 
 const Generico: Array<DataObj> = [
   {
-    route: '/generico',
     title: 'Джене-Рико',
     isParent: true,
     children: [
       {
-        route: '/generico',
         title: 'Джене-Рико',
         isParent: false,
         content: [
@@ -17,7 +15,6 @@ const Generico: Array<DataObj> = [
         ]
       },
       {
-        route: '/supernatural',
         title: 'Супернатуралы',
         isParent: false,
         content: [

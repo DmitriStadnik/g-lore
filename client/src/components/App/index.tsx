@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    paddingBottom: '100px'
   },
   drawerHeader: {
     display: 'flex',
@@ -105,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
   },
   linkText: {
     '& span': {
-      fontSize: 14,
+      fontSize: 12,
       padding: theme.spacing(1, 3),
     }
   },
@@ -121,7 +122,7 @@ const App = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(mainPage.title);
   const [content, setContent] = useState<Array<any>>();
   const location = useLocation();
 
@@ -131,8 +132,8 @@ const App = () => {
       setContent(mainPage.content)
     } else {
       const routeArr = location.pathname.split('/');
-      const currentParent = data.find(e => e.route === `/${routeArr[1]}`);
-      const currentChild = currentParent && currentParent.children && currentParent.children.find(e => e.route === `/${routeArr[2]}`);
+      const currentParent = data.find(e => transliterateRus(e.title) === `${routeArr[1]}`);
+      const currentChild = currentParent && currentParent.children && currentParent.children.find(e => transliterateRus(e.title) === `${routeArr[2]}`);
 
       if (currentChild !== undefined) {
         setTitle(currentChild.title);
@@ -190,7 +191,7 @@ const App = () => {
         <Divider />
         <List className={classes.accordionList}>
           <ListItem button key={mainPage.title} className={classes.accordionListItem}>
-            <Link component={RouterLink} to={`${mainPage.route}`} className={classes.link}>
+            <Link component={RouterLink} to='/' className={classes.link}>
               <ListItemText primary={mainPage.title} className={classes.linkTextMain} />
             </Link>
           </ListItem>
@@ -209,7 +210,7 @@ const App = () => {
               <List className={classes.accordionList}>
                 {parent.children && parent.children.map((child, index) => (
                   <ListItem button key={`${transliterateRus(child.title)}`} className={classes.accordionListItem}>
-                    <Link component={RouterLink} to={`${parent.route}${child.route}`} className={classes.link}>
+                    <Link component={RouterLink} to={`/${transliterateRus(parent.title)}/${transliterateRus(child.title)}`} className={classes.link}>
                       <ListItemText primary={child.title} className={classes.linkText} />
                     </Link>
                   </ListItem>

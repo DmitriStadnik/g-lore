@@ -3,12 +3,10 @@ import {compareObjectsByTitle} from "../../utils";
 
 const Gods: Array<DataObj> = [
   {
-    route: '/gods',
     title: 'Боги',
     isParent: true,
     children: [
       {
-        route: '/dristoc',
         title: 'Дристоц',
         isParent: false,
         content: [
@@ -17,7 +15,6 @@ const Gods: Array<DataObj> = [
         ]
       },
       {
-        route: '/amanda',
         title: 'Аманда',
         isParent: false,
         content: [
@@ -26,7 +23,6 @@ const Gods: Array<DataObj> = [
         ]
       },
       {
-        route: '/princessa-pidaras',
         title: 'Принцесса Пидарас',
         isParent: false,
         content: [
@@ -35,7 +31,6 @@ const Gods: Array<DataObj> = [
         ]
       },
       {
-        route: '/her-memus',
         title: 'Хер Мемус Н\'Кок',
         isParent: false,
         content: [
@@ -44,7 +39,6 @@ const Gods: Array<DataObj> = [
         ]
       },
       {
-        route: '/vezdessush',
         title: 'Вездессущ',
         isParent: false,
         content: [
