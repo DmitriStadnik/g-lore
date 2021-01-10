@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link as RouterLink, useLocation} from 'react-router-dom';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -30,13 +30,14 @@ const drawerWidth = 320;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height: 'calc(100% - 64px)'
+    height: 'calc(100% - 64px)',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: 'rgb(92, 151, 191)'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -96,6 +97,9 @@ const useStyles = makeStyles((theme) => ({
   },
   accordionListItem: {
     padding: '0',
+    '&:hover': {
+      backgroundColor: "rgb(92, 151, 191)"
+    }
   },
   link: {
     color: theme.palette.text.primary,
@@ -105,12 +109,12 @@ const useStyles = makeStyles((theme) => ({
     padding: '0',
     '&:hover': {
       textDecoration: 'none',
-      color: theme.palette.primary.dark,
+      color: 'white',
     }
   },
   linkText: {
     '& span': {
-      fontSize: 13,
+      fontSize: 14,
       padding: theme.spacing(0, 3),
     }
   },
@@ -119,13 +123,21 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 14,
       padding: theme.spacing(1, 2),
     }
+  },
+  contentLink: {
+    color: 'rgb(31, 58, 147)',
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none',
+      color: 'rgb(92, 151, 191)',
+    }
   }
 }));
 
 const App = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(window.innerWidth > 600);
+  const [open, setOpen] = useState(window.innerWidth >= 600);
   const [title, setTitle] = useState(mainPage.title);
   const [content, setContent] = useState<Array<any>>();
   const location = useLocation();
@@ -146,6 +158,12 @@ const App = () => {
     }
   }, [location])
 
+  const isLinkActive = (path: string) => {
+    if (location.pathname === path) return 'content_link--active';
+
+    return ''
+  }
+
   const parseContent = (item: string) => {
     return parse(item, {
       replace: domNode => {
@@ -153,7 +171,7 @@ const App = () => {
           if (domNode.attribs && domNode.attribs.href) {
             return React.createElement(
               RouterLink,
-              {to: domNode.attribs.href},
+              {to: domNode.attribs.href, className: classes.contentLink},
               domNode.children && domNode.children[0].data
             );
           }
@@ -167,6 +185,12 @@ const App = () => {
       }
     })
   }
+
+  const handleLinkClick = () => {
+    if (window.innerWidth < 600) {
+      setOpen(false);
+    }
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -217,7 +241,11 @@ const App = () => {
         <Divider />
         <List className={classes.accordionList}>
           <ListItem button key={mainPage.title} className={classes.accordionListItem}>
-            <Link component={RouterLink} to='/' className={classes.link}>
+            <Link
+              component={RouterLink}
+              to='/'
+              className={`${classes.link} ${isLinkActive(`/`)}`}
+            >
               <ListItemText primary={mainPage.title} className={classes.linkTextMain} />
             </Link>
           </ListItem>
@@ -236,7 +264,12 @@ const App = () => {
               <List className={classes.accordionList}>
                 {parent.children && parent.children.map((child, index) => (
                   <ListItem button key={`${transliterateRus(child.title)}`} className={classes.accordionListItem}>
-                    <Link component={RouterLink} to={`/${transliterateRus(parent.title)}/${transliterateRus(child.title)}`} className={classes.link}>
+                    <Link
+                      component={RouterLink}
+                      to={`/${transliterateRus(parent.title)}/${transliterateRus(child.title)}`}
+                      className={`${classes.link} ${isLinkActive(`/${transliterateRus(parent.title)}/${transliterateRus(child.title)}`)}`}
+                      onClick={handleLinkClick}
+                    >
                       <ListItemText primary={child.title} className={classes.linkText} />
                     </Link>
                   </ListItem>
