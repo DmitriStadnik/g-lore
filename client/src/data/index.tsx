@@ -7,7 +7,6 @@ import Kokovo from "./datasets/Kokovo";
 
 export const mainPage: DataObj = {
   title: 'Главная',
-  isParent: false,
   content: [
     `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
        ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum

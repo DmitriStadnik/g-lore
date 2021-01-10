@@ -4,11 +4,9 @@ import {compareObjectsByTitle} from "../../utils";
 const Gods: Array<DataObj> = [
   {
     title: 'Боги',
-    isParent: true,
     children: [
       {
         title: 'Дристоц',
-        isParent: false,
         content: [
           `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua.`,
@@ -16,7 +14,6 @@ const Gods: Array<DataObj> = [
       },
       {
         title: 'Аманда',
-        isParent: false,
         content: [
           `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua.`,
@@ -24,7 +21,6 @@ const Gods: Array<DataObj> = [
       },
       {
         title: 'Принцесса Пидарас',
-        isParent: false,
         content: [
           `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua.`,
@@ -32,7 +28,6 @@ const Gods: Array<DataObj> = [
       },
       {
         title: 'Хер Мемус Н\'Кок',
-        isParent: false,
         content: [
           `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua.`,
@@ -40,7 +35,6 @@ const Gods: Array<DataObj> = [
       },
       {
         title: 'Вездессущ',
-        isParent: false,
         content: [
           `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua.`,

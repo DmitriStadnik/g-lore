@@ -1,6 +1,6 @@
 export type DataObj = {
   title: string,
-  isParent: Boolean,
+  isMainArticle?: Boolean,
   children?: Array<DataObj>,
   content?: Array<any>
 }

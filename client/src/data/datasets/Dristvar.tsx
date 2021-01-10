@@ -1,15 +1,14 @@
 import {DataObj} from "../DataObj";
 import dristoborod from "../images/dristoborod.png";
-import {compareObjectsByTitle} from "../../utils";
+import {compareObjectsByTitle, transliterateRus} from "../../utils";
 
 const Dristvar: Array<DataObj> = [
   {
     title: 'Дриствар',
-    isParent: true,
     children: [
       {
         title: 'Королевство Дриствар',
-        isParent: false,
+        isMainArticle: true,
         content: [
           `Королевство Дриствар - древнейшее государство, созданное последователями Дристца.`,
           `Правитель: Король Дристобород.`,
@@ -20,10 +19,9 @@ const Dristvar: Array<DataObj> = [
       },
       {
         title: 'Король Дристобород',
-        isParent: false,
         content: [
           `<img src="${dristoborod}" class="article-image" />`,
-          `Король Дристобород І Освободитель - король <a href="/dristvar/korolevstvo-dristvar">Дриствара</a>. `,
+          `Король Дристобород І Освободитель - король <a href="/${transliterateRus('Дриствар')}/${transliterateRus('Королевство Дриствар')}">Дриствара</a>. `,
           `<h6>Дополнительная информация</h6>`,
           `Его трон большой, белый и керамический. 
             Сбоку у него висит цепочка, за которую он дергает, сидение открывается и он туда срет. 
@@ -35,16 +33,14 @@ const Dristvar: Array<DataObj> = [
       },
       {
         title: 'Жепа',
-        isParent: false,
         content: [
-          `Жепа - Столица <a href="/dristvar/korolevstvo-dristvar">Дриствара</a>.`,
+          `Жепа - Столица <a href="/${transliterateRus('Дриствар')}/${transliterateRus('Королевство Дриствар')}">Дриствара</a>.`,
         ]
       },
       {
         title: 'Жепа в области Жепы',
-        isParent: false,
         content: [
-          `Жепа - портовый город недалеко от <a href="/dristvar/zhepa">столицы</a>. Две жепы испокон веков спорят какая из двух жеп жепнее. 
+          `Жепа - портовый город недалеко от <a href="/${transliterateRus('Дриствар')}/${transliterateRus('Жепа')}">столицы</a>. Две жепы испокон веков спорят какая из двух жеп жепнее. 
           `,
         ]
       },

@@ -68,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -101,18 +100,18 @@ const useStyles = makeStyles((theme) => ({
     padding: '0',
     '&:hover': {
       textDecoration: 'none',
-      color: theme.palette.primary.light,
+      color: theme.palette.primary.dark,
     }
   },
   linkText: {
     '& span': {
-      fontSize: 12,
-      padding: theme.spacing(1, 3),
+      fontSize: 13,
+      padding: theme.spacing(0, 3),
     }
   },
   linkTextMain: {
     '& span': {
-      fontSize: 16,
+      fontSize: 14,
       padding: theme.spacing(1, 2),
     }
   }
@@ -198,7 +197,7 @@ const App = () => {
         </List>
 
         {data && data.map((parent, index) => (
-          <Accordion key={`${transliterateRus(parent.title)}-dropdown`}>
+          <Accordion key={`${transliterateRus(parent.title)}-dropdown`} className='custom_accordion'>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls={`${transliterateRus(parent.title)}-content`}
@@ -226,29 +225,31 @@ const App = () => {
         })}
       >
         <div className={classes.drawerHeader} />
-        {content && content.map((item, index) => (
-          <Typography paragraph key={index}>
-            {parse(item, {
-              replace: domNode => {
-                if (domNode.name && domNode.name === 'a') {
-                  if (domNode.attribs && domNode.attribs.href) {
+        <div className='content_wrapper'>
+          {content && content.map((item, index) => (
+            <Typography paragraph key={index}>
+              {parse(item, {
+                replace: domNode => {
+                  if (domNode.name && domNode.name === 'a') {
+                    if (domNode.attribs && domNode.attribs.href) {
+                      return React.createElement(
+                        RouterLink,
+                        {to: domNode.attribs.href},
+                        domNode.children && domNode.children[0].data
+                      );
+                    }
+                  } else if (domNode.name && domNode.name === 'h6') {
                     return React.createElement(
-                      RouterLink,
-                      {to: domNode.attribs.href},
+                      Typography,
+                      {variant: 'h6'},
                       domNode.children && domNode.children[0].data
                     );
                   }
-                } else if (domNode.name && domNode.name === 'h6') {
-                  return React.createElement(
-                    Typography,
-                    {variant: 'h6'},
-                    domNode.children && domNode.children[0].data
-                  );
                 }
-              }
-            })}
-          </Typography>
-        ))}
+              })}
+            </Typography>
+          ))}
+        </div>
       </main>
     </div>
   );

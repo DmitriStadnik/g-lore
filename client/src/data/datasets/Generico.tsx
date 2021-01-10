@@ -4,11 +4,10 @@ import {compareObjectsByTitle} from "../../utils";
 const Generico: Array<DataObj> = [
   {
     title: 'Джене-Рико',
-    isParent: true,
     children: [
       {
         title: 'Джене-Рико',
-        isParent: false,
+        isMainArticle: true,
         content: [
           `TEST 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. `,
@@ -16,7 +15,6 @@ const Generico: Array<DataObj> = [
       },
       {
         title: 'Супернатуралы',
-        isParent: false,
         content: [
           `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. `

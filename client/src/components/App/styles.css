@@ -3,3 +3,27 @@
   display: block;
   margin: auto;
 }
+
+.custom_accordion.Mui-expanded {
+  margin: 0!important;
+}
+
+.custom_accordion .MuiAccordionSummary-root.Mui-expanded {
+  min-height: 46px;
+}
+
+.custom_accordion .MuiAccordionSummary-content .MuiTypography-body1 {
+  font-size: 14px;
+}
+
+.custom_accordion .MuiAccordionSummary-content.Mui-expanded {
+  margin: 12px 0;
+}
+
+.content_wrapper {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  padding-bottom: 40px;
+}

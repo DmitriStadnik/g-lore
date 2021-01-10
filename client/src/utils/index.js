@@ -35,7 +35,7 @@ export const transliterateRus = (str) => {
 
   str = str
     .toLowerCase()
-    .replace(/ /g,"_")
+    .replace(/ /g,"-")
     .replace(/[ъь]+/g, '')
     .replace(/й/g, 'i');
 
@@ -51,6 +51,9 @@ export const transliterateRus = (str) => {
 }
 
 export const compareObjectsByTitle = (a, b) => {
+  if (a.isMainArticle) return -1;
+  if (b.isMainArticle) return 1;
+
   if ( a.title < b.title ){
     return -1;
   }

@@ -1,26 +1,25 @@
 import {DataObj} from "../DataObj";
 import testImage1 from "../images/50.jpg";
-import {compareObjectsByTitle} from "../../utils";
+import {compareObjectsByTitle, transliterateRus} from "../../utils";
 
 const Test: Array<DataObj> = [
   {
     title: 'Мир',
-    isParent: true,
     children: [
       {
         title: 'Древняя история мира',
-        isParent: false,
+        isMainArticle: true,
         content: [
           `<h6>Дристоц</h6>`,
-          `Легенда гласит, что жил некогда обычный семьянин, которого звали <a href="/gods/dristoc">Дристоц</a>. 
-          У него была жена, которую звали <a href="/gods/amanda">Аманда</a> и дочь по имени <a href="/gods/princessa-pidaras">Принцесса Пидарас</a>. 
-          Он регулярно проводил время со своими друзьями <a href="/gods/vezdessush">Вездессущем</a> и <a href="/gods/her-memus">Хер Мемусом Н’Коком</a>. 
+          `Легенда гласит, что жил некогда обычный семьянин, которого звали <a href="/${transliterateRus('Боги')}/${transliterateRus('Дристоц')}">Дристоц</a>. 
+          У него была жена, которую звали <a href="/${transliterateRus('Боги')}/${transliterateRus('Аманда')}">Аманда</a> и дочь по имени <a href="/${transliterateRus('Боги')}/${transliterateRus('Принцесса Пидарас')}">Принцесса Пидарас</a>. 
+          Он регулярно проводил время со своими друзьями <a href="/${transliterateRus('Боги')}/${transliterateRus('Вездессущ')}">Вездессущем</a> и <a href="/${transliterateRus('Боги')}/${transliterateRus('Хер Мемус Н\'Кок')}">Хер Мемусом Н'Коком</a>. 
           В целом, он вел обычную спокойную жизнь, но у него была одна яркая черта - он просто обожал шутки про говно. 
           Он шутил про говно постоянно. В любой ситуации он мог пошутить про говно и смеяться от этого так, 
           что его друзья боялись что он задохнется. Его окружение почти смирилось с его причудой.`,
           `<h6>Великий Рофл</h6>`,
           `Как-то раз Дристоц в порыве ебанутости сотворил Абсолютную Шутку про Говно. 
-          И стоило ему озвучить её своим друзьям, как произошел <a href="/world/rofl">Великий Рофл</a>, который породил целый новый мир. 
+          И стоило ему озвучить её своим друзьям, как произошел <a href="/${transliterateRus('Мир')}/${transliterateRus('Великий Рофл')}">Великий Рофл</a>, который породил целый новый мир. 
           Дристоц решил не упускать открывшиеся перед ним возможности и перспективы, 
           потому он с головой погрузился в этот новый неведомый мир.`,
           `Его первой целью было создать людей по своему образу и подобию. 
@@ -60,14 +59,12 @@ const Test: Array<DataObj> = [
       },
       {
         title: 'Великий Рофл',
-        isParent: false,
         content: [
           `Результат озвучивания Дристцом Абсолютной Шутки про Говно. Именно в ходе Великого Рофла возник мир.`
         ]
       },
       {
         title: 'ХРОШНЯ',
-        isParent: false,
         content: [
           `TEST 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
             ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
