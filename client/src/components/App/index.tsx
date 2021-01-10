@@ -58,7 +58,10 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    paddingBottom: '100px'
+    paddingBottom: '100px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   },
   drawerHeader: {
     display: 'flex',
@@ -122,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(window.innerWidth > 600);
   const [title, setTitle] = useState(mainPage.title);
   const [content, setContent] = useState<Array<any>>();
   const location = useLocation();
@@ -142,6 +145,28 @@ const App = () => {
       }
     }
   }, [location])
+
+  const parseContent = (item: string) => {
+    return parse(item, {
+      replace: domNode => {
+        if (domNode.name && domNode.name === 'a') {
+          if (domNode.attribs && domNode.attribs.href) {
+            return React.createElement(
+              RouterLink,
+              {to: domNode.attribs.href},
+              domNode.children && domNode.children[0].data
+            );
+          }
+        } else if (domNode.name && domNode.name === 'h6') {
+          return React.createElement(
+            Typography,
+            {variant: 'h6'},
+            domNode.children && domNode.children[0].data
+          );
+        }
+      }
+    })
+  }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -230,25 +255,7 @@ const App = () => {
         <div className='content_wrapper'>
           {content && content.map((item, index) => (
             <Typography paragraph key={index}>
-              {parse(item, {
-                replace: domNode => {
-                  if (domNode.name && domNode.name === 'a') {
-                    if (domNode.attribs && domNode.attribs.href) {
-                      return React.createElement(
-                        RouterLink,
-                        {to: domNode.attribs.href},
-                        domNode.children && domNode.children[0].data
-                      );
-                    }
-                  } else if (domNode.name && domNode.name === 'h6') {
-                    return React.createElement(
-                      Typography,
-                      {variant: 'h6'},
-                      domNode.children && domNode.children[0].data
-                    );
-                  }
-                }
-              })}
+              {parseContent(item)}
             </Typography>
           ))}
         </div>
