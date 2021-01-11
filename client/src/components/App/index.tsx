@@ -125,12 +125,15 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   contentLink: {
-    color: 'rgb(31, 58, 147)',
+    color: 'rgb(30, 51, 237)',
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'none',
       color: 'rgb(92, 151, 191)',
     }
+  },
+  contentHeader: {
+    borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
   }
 }));
 
@@ -178,7 +181,7 @@ const App = () => {
         } else if (domNode.name && domNode.name === 'h6') {
           return React.createElement(
             Typography,
-            {variant: 'h6'},
+            {variant: 'h6', className: classes.contentHeader},
             domNode.children && domNode.children[0].data
           );
         }
