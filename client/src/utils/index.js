@@ -35,6 +35,7 @@ export const transliterateRus = (str) => {
 
   str = str
     .toLowerCase()
+    .replace(/"/g,"")
     .replace(/ /g,"-")
     .replace(/[ъь]+/g, '')
     .replace(/й/g, 'i');

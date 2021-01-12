@@ -248,6 +248,7 @@ const App = () => {
               component={RouterLink}
               to='/'
               className={`${classes.link} ${isLinkActive(`/`)}`}
+              onClick={handleLinkClick}
             >
               <ListItemText primary={mainPage.title} className={classes.linkTextMain} />
             </Link>
