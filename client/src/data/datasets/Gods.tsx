@@ -22,8 +22,7 @@ const Gods: Array<DataObj> = [
       {
         title: 'Принцесса Пидарас',
         content: [
-          `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua.`,
+          `рандеву с водоебом`,
         ]
       },
       {
