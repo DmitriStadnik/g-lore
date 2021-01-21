@@ -69,7 +69,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
+  },
+  drawerHeaderText: {
+    paddingLeft: '10px'
   },
   content: {
     flexGrow: 1,
@@ -149,6 +152,7 @@ const App = () => {
     if (location.pathname === '/') {
       setTitle(mainPage.title)
       setContent(mainPage.content)
+      document.title = `${mainPage.title} - Говнолор`
     } else {
       const routeArr = location.pathname.split('/');
       const currentParent = data.find(e => transliterateRus(e.title) === `${routeArr[1]}`);
@@ -157,8 +161,10 @@ const App = () => {
       if (currentChild !== undefined) {
         setTitle(currentChild.title);
         setContent(currentChild.content);
+        document.title = `${currentChild.title} - Говнолор`
       }
     }
+
   }, [location])
 
   const isLinkActive = (path: string) => {
@@ -237,6 +243,7 @@ const App = () => {
         }}
       >
         <div className={classes.drawerHeader}>
+          <Typography variant="h6" className={classes.drawerHeaderText} noWrap>Говнолор</Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
