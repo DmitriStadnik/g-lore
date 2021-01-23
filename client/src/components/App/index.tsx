@@ -97,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
   accordionList: {
     width: '100%',
     padding: '0',
+    paddingBottom: '10px'
   },
   accordionListItem: {
     padding: '0',
@@ -136,7 +137,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   contentHeader: {
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
+    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    marginBottom: '16px',
+    marginTop: '24px'
   }
 }));
 
@@ -153,18 +156,18 @@ const App = () => {
       setTitle(mainPage.title)
       setContent(mainPage.content)
       document.title = `${mainPage.title} - Говнолор`
-    } else {
-      const routeArr = location.pathname.split('/');
-      const currentParent = data.find(e => transliterateRus(e.title) === `${routeArr[1]}`);
-      const currentChild = currentParent && currentParent.children && currentParent.children.find(e => transliterateRus(e.title) === `${routeArr[2]}`);
-
-      if (currentChild !== undefined) {
-        setTitle(currentChild.title);
-        setContent(currentChild.content);
-        document.title = `${currentChild.title} - Говнолор`
-      }
+      return;
     }
 
+    const routeArr = location.pathname.split('/');
+    const currentParent = data.find(e => transliterateRus(e.title) === `${routeArr[1]}`);
+    const currentChild = currentParent && currentParent.children && currentParent.children.find(e => transliterateRus(e.title) === `${routeArr[2]}`);
+
+    if (currentChild !== undefined) {
+      setTitle(currentChild.title);
+      setContent(currentChild.content);
+      document.title = `${currentChild.title} - Говнолор`
+    }
   }, [location])
 
   const isLinkActive = (path: string) => {
@@ -176,23 +179,45 @@ const App = () => {
   const parseContent = (item: string) => {
     return parse(item, {
       replace: domNode => {
-        if (domNode.name && domNode.name === 'a') {
+        if (!domNode.name || !domNode.children) return;
+
+        if (domNode.name === 'a') {
           if (domNode.attribs && domNode.attribs.href) {
             return React.createElement(
               RouterLink,
               {to: domNode.attribs.href, className: classes.contentLink},
-              domNode.children && domNode.children[0].data
+              domNode.children[0].data
             );
           }
-        } else if (domNode.name && domNode.name === 'h6') {
+        }
+
+        if (domNode.name === 'h6') {
           return React.createElement(
             Typography,
             {variant: 'h6', className: classes.contentHeader},
-            domNode.children && domNode.children[0].data
+            domNode.children[0].data
           );
         }
+
+        return;
       }
     })
+  }
+
+  const createTextElement = (index: number, item: string) => {
+    const children = parseContent(item);
+
+    if (item.indexOf('<h6>') >= 0) {
+      return (
+        <React.Fragment key={index}>{children}</React.Fragment>
+      )
+    }
+
+    return (
+      <Typography paragraph key={index}>
+        {children}
+      </Typography>
+    )
   }
 
   const handleLinkClick = () => {
@@ -297,11 +322,9 @@ const App = () => {
       >
         <div className={classes.drawerHeader} />
         <div className='content_wrapper'>
-          {content && content.map((item, index) => (
-            <Typography paragraph key={index}>
-              {parseContent(item)}
-            </Typography>
-          ))}
+          {content && content.map((item, index) => {
+            return createTextElement(index, item)
+          })}
         </div>
       </main>
     </div>
