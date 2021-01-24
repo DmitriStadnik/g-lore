@@ -13,20 +13,20 @@ const Kokovo: Array<DataObj> = [
           ut labore et dolore magna aliqua. `,
         ]
       },
-      {
-        title: 'Членин',
-        content: [
-          `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. `
-        ]
-      },
-      {
-        title: 'Лонганус',
-        content: [
-          `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. `
-        ]
-      },
+      // {
+      //   title: 'Членин',
+      //   content: [
+      //     `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      //     ut labore et dolore magna aliqua. `
+      //   ]
+      // },
+      // {
+      //   title: 'Лонганус',
+      //   content: [
+      //     `TEST 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      //     ut labore et dolore magna aliqua. `
+      //   ]
+      // },
     ].sort(compareObjectsByTitle)
   },
 

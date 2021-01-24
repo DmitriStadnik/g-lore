@@ -14,7 +14,7 @@ export const mainPage: DataObj = {
 
 export const data: Array<DataObj> = [
   ...World,
-  // ...Gods,
+  ...Gods,
   ...Dristvar,
   // ...Kokovo,
   // ...Generico
