@@ -16,6 +16,8 @@ export const data: Array<DataObj> = [
   ...World,
   ...Gods,
   ...Dristvar,
-  // ...Kokovo,
-  // ...Generico
+  ...Kokovo,
+  // ...Generico,
+  // ...Nigermania,
+  // ...Azirbaizhan,
 ];
