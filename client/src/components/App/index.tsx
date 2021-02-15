@@ -38,6 +38,10 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
+    window.scroll({
+      top: 0
+    });
+
     if (location.pathname === '/') {
       setTitle(mainPage.title)
       setContent(mainPage.content)
@@ -122,7 +126,7 @@ const App = () => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      <CssBaseline/>
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -137,7 +141,7 @@ const App = () => {
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
           <Typography variant="h6" noWrap>
             {title}
@@ -156,10 +160,10 @@ const App = () => {
         <div className={classes.drawerHeader}>
           <Typography variant="h6" className={classes.drawerHeaderText} noWrap>Говнолор</Typography>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
         </div>
-        <Divider />
+        <Divider/>
         <List className={`${classes.accordionList} ${classes.mainPageButton}`}>
           <ListItem button key={mainPage.title} className={classes.accordionListItem}>
             <Link
@@ -168,7 +172,7 @@ const App = () => {
               className={`${classes.link} ${isLinkActive(`/`)}`}
               onClick={handleLinkClick}
             >
-              <ListItemText primary={mainPage.title} className={classes.linkTextMain} />
+              <ListItemText primary={mainPage.title} className={classes.linkTextMain}/>
             </Link>
           </ListItem>
         </List>
@@ -176,7 +180,7 @@ const App = () => {
         {data && data.map((parent, index) => (
           <Accordion key={`${transliterateRus(parent.title)}-dropdown`} className='custom_accordion'>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
+              expandIcon={<ExpandMoreIcon/>}
               aria-controls={`${transliterateRus(parent.title)}-content`}
               id={`${transliterateRus(parent.title)}-header`}
             >
@@ -192,7 +196,7 @@ const App = () => {
                       className={`${classes.link} ${isLinkActive(`/${transliterateRus(parent.title)}/${transliterateRus(child.title)}`)}`}
                       onClick={handleLinkClick}
                     >
-                      <ListItemText primary={child.title} className={classes.linkText} />
+                      <ListItemText primary={child.title} className={classes.linkText}/>
                     </Link>
                   </ListItem>
                 ))}
@@ -206,7 +210,7 @@ const App = () => {
           [classes.contentShift]: open,
         })}
       >
-        <div className={classes.drawerHeader} />
+        <div className={classes.drawerHeader}/>
         <div className='content_wrapper'>
           {content && content.map((item, index) => {
             return createTextElement(index, item)

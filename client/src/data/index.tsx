@@ -4,6 +4,7 @@ import Dristvar from './datasets/Dristvar'
 import Gods from './datasets/Gods'
 import Generico from "./datasets/Generico";
 import Kokovo from "./datasets/Kokovo";
+import Pizdrail from "./datasets/Pizdrail";
 
 export const mainPage: DataObj = {
   title: 'Главная',
@@ -17,6 +18,7 @@ export const data: Array<DataObj> = [
   ...Gods,
   ...Dristvar,
   ...Kokovo,
+  // ...Pizdrail,
   // ...Generico,
   // ...Nigermania,
   // ...Azirbaizhan,
