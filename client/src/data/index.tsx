@@ -5,6 +5,7 @@ import Gods from './datasets/Gods'
 import Generico from "./datasets/Generico";
 import Kokovo from "./datasets/Kokovo";
 import Pizdrail from "./datasets/Pizdrail";
+import Azirbaizhan from "./datasets/Azirbaizhan";
 
 export const mainPage: DataObj = {
   title: 'Главная',
@@ -21,5 +22,5 @@ export const data: Array<DataObj> = [
   ...Pizdrail,
   // ...Generico,
   // ...Nigermania,
-  // ...Azirbaizhan,
+  ...Azirbaizhan,
 ];
