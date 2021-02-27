@@ -7,6 +7,7 @@ import Kokovo from "./datasets/Kokovo";
 import Pizdrail from "./datasets/Pizdrail";
 import Azirbaizhan from "./datasets/Azirbaizhan";
 import Kso from "./datasets/Kso";
+import Nigermania from "./datasets/Nigermania";
 
 export const mainPage: DataObj = {
   title: 'Главная',
@@ -22,7 +23,7 @@ export const data: Array<DataObj> = [
   ...Kokovo,
   ...Pizdrail,
   ...Kso,
-  // ...Generico,
-  // ...Nigermania,
   ...Azirbaizhan,
+  ...Generico,
+  ...Nigermania,
 ];
