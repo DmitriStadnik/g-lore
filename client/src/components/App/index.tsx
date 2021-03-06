@@ -158,7 +158,7 @@ const App = () => {
         }}
       >
         <div className={classes.drawerHeader}>
-          <Typography variant="h6" className={classes.drawerHeaderText} noWrap>Говнолор</Typography>
+          <Typography variant="h6" className={classes.drawerHeaderText} noWrap>Говнолор 1.0</Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
