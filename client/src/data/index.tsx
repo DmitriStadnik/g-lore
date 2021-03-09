@@ -8,6 +8,7 @@ import Pizdrail from "./datasets/Pizdrail";
 import Azirbaizhan from "./datasets/Azirbaizhan";
 import Kso from "./datasets/Kso";
 import Nigermania from "./datasets/Nigermania";
+import Extras from "./datasets/Extras";
 
 export const mainPage: DataObj = {
   title: 'Главная',
@@ -26,4 +27,5 @@ export const data: Array<DataObj> = [
   ...Azirbaizhan,
   ...Generico,
   ...Nigermania,
+  ...Extras,
 ];
