@@ -2,7 +2,7 @@ import {DataObj} from "../DataObj";
 import dristvar from "../images/dristvar/dristvar.png";
 import dristoborod1 from "../images/dristvar/dristoborod-1.png";
 import dristoborod2 from "../images/dristvar/dristoborod-2.png";
-import govnicija from "../images/govnicija.png";
+import govnicia from "../images/dristvar/govnicia.png";
 import anat from "../images/anat.png";
 import ebna from "../images/ebna.jpg";
 import ban from "../images/ban.png";
@@ -152,7 +152,7 @@ const Dristvar: Array<DataObj> = [
       {
         title: 'Говниция',
         content: [
-          `<img src="${govnicija}" class="article-image" />`,
+          `<img src="${govnicia}" alt="Королева Говниция в 37 году ПГС" />`,
           `Королева Говниция - жена <a href="/${transliterateRus('Дриствар')}/${transliterateRus('Дристобород')}">Дристоборода</a>, 
 королева <a href="/${transliterateRus('Дриствар')}/${transliterateRus('Королевство Дриствар')}">Дриствара</a> и глава ордена дристомесов. `,
           `<h6>История</h6>`,
