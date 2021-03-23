@@ -3,8 +3,20 @@
 }
 
 .article-image {
-  max-width: 270px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.article-image img {
+  max-width: 80%;
   display: block;
+  margin: auto;
+}
+
+.article-image .article-image_text {
+  text-align: center;
+  font-size: 14px;
+  max-width: 80%;
   margin: auto;
 }
 
@@ -35,4 +47,10 @@
 
 .content_link--active span {
   font-weight: bold;
+}
+
+@media screen and (max-width: 599px) {
+  .article-image img {
+    max-width: 100%;
+  }
 }

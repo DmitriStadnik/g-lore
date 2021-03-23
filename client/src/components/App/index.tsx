@@ -25,6 +25,7 @@ import {data, mainPage} from '../../data';
 import {transliterateRus} from "../../utils";
 import './styles.css';
 import {useStyles} from "./styles";
+import {ImageWithText} from "../ImageWithText";
 
 const drawerWidth = 320;
 
@@ -87,6 +88,15 @@ const App = () => {
             {variant: 'h6', className: classes.contentHeader},
             domNode.children[0].data
           );
+        }
+
+        if (domNode.name === 'img') {
+          if (domNode.attribs && domNode.attribs.src) {
+            return React.createElement(
+              ImageWithText,
+              {imagePath: domNode.attribs.src, text: domNode.attribs.alt || ''}
+            );
+          }
         }
 
         return;
