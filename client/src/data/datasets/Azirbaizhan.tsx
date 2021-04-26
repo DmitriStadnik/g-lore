@@ -1,5 +1,6 @@
 import {DataObj} from "../DataObj";
 import {compareObjectsByTitle, transliterateRus} from "../../utils";
+import azir from "../images/azirbaizhan/azir.png";
 
 const Azirbaizhan: Array<DataObj> = [
   {
@@ -32,6 +33,7 @@ const Azirbaizhan: Array<DataObj> = [
       {
         title: 'Пиратор Азир',
         content: [
+          `<img src="${azir}" class="article-image" alt="Пиратор Азир в 37 году ПГС" />`,
           `Пиратор Азир - правитель и основатель <a href="/${transliterateRus('Азирбайджан')}/${transliterateRus('Азирбайджан')}">Азирбайджана</a>. Он император и он пират.`,
           `<h6>Ранние годы</h6>`,
           `Мало кто знает, что у членов экипажа <a href="/${transliterateRus('Дриствар')}/${transliterateRus('Линкор "Квадратное Очко"')}">Квадратного Очка</a> Брямбы и Брюквы был брат по имени Азир. Пока Брямба интересовался оружием, а Брюква - готовкой,

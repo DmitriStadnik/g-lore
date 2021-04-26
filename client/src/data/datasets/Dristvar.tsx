@@ -3,9 +3,9 @@ import dristvar from "../images/dristvar/dristvar.png";
 import dristoborod1 from "../images/dristvar/dristoborod-1.png";
 import dristoborod2 from "../images/dristvar/dristoborod-2.png";
 import govnicia from "../images/dristvar/govnicia.png";
-import anat from "../images/anat.png";
-import ebna from "../images/ebna.jpg";
-import ban from "../images/ban.png";
+import ebanat from "../images/dristvar/ebanat.png";
+import ebna from "../images/dristvar/ebna.png";
+import ueban from "../images/dristvar/ueban.png";
 import {compareObjectsByTitle, transliterateRus} from "../../utils";
 
 const Dristvar: Array<DataObj> = [
@@ -279,7 +279,7 @@ const Dristvar: Array<DataObj> = [
       {
         title: 'Ебна Мочяговна',
         content: [
-          `<img src="${ebna}" class="article-image" />`,
+          `<img src="${ebna}" class="article-image" alt="Ебна Мочяговна в 37 году ПГС" />`,
           `Ебна Мочяговна - паранормальная болотная проститутка-индивидуалка, известная на весь континент.`,
           `<h6>История</h6>`,
           `Лучшая выпускница за всю историю существования Ебназии (которая, собственно в её честь и была переименована в Ебназию). После выпуска
@@ -350,7 +350,7 @@ const Dristvar: Array<DataObj> = [
       {
         title: 'Е.Б.Анат',
         content: [
-          `<img src="${anat}" class="article-image" />`,
+          `<img src="${ebanat}" class="article-image" alt="Портрет Е.Б.Аната с доски почета ДНИИЩЕ, 37 ПГС" />`,
           `Ебаный Бомж Анат - глава отдела научных разработок <a href="/${transliterateRus('Дриствар')}/${transliterateRus('ДНИИЩЕ')}">ДНИИЩЕ</a>.`,
           `<h6>История</h6>`,
           `По официальной версии, родился в 9 году <a href="/${transliterateRus('Мир')}/${transliterateRus('Говнина Ссаная')}">ДГС</a> в семье бамондеров. 
@@ -445,7 +445,7 @@ const Dristvar: Array<DataObj> = [
       {
         title: 'У.Е.Бан',
         content: [
-          `<img src="${ban}" class="article-image" />`,
+          `<img src="${ueban}" class="article-image" alt="Автопортрет У.Е.Бана, сделанный незадолго до смерти" />`,
           `Уебан Ебаный Бан (12 <a href="/${transliterateRus('Мир')}/${transliterateRus('Говнина Ссаная')}">ДГС</a> - 
           35 ПГС) - великий дристварский историк, писатель и уебан.`,
           `<h6>Ранние годы</h6>`,
