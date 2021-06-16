@@ -4,6 +4,7 @@ import chlenin1 from "../images/kokovo/chlenin1.png";
 import chlenin2 from "../images/kokovo/chlenin2.png";
 import sralin from "../images/kokovo/sralin.png";
 import longanus from "../images/kokovo/longanus.png";
+import hui from "../images/kokovo/hui.png";
 
 const Kokovo: Array<DataObj> = [
   {
@@ -266,6 +267,7 @@ const Kokovo: Array<DataObj> = [
       {
         title: 'Хуй и Хуй',
         content: [
+          `<img src="${hui}" alt="Изображение братьев Хуев сделанное для пропагандистских материалов" />`,
           `Хуй и Хуй (два хуя) - полулегендарные герои <a href="/${transliterateRus('Коково')}/${transliterateRus('Королевство Коково')}">Коково</a>, персонажи коковской пропаганды.`,
           `<h6>История</h6>`,
           `Два брата, которых родители назвали одинаково потому что тупые. По пропагандистской легенде, как только Коково освободило землю, где они жили, от <a href="/${transliterateRus('Дриствар')}/${transliterateRus('Королевство Дриствар')}">Дриствара</a>, 
